@@ -34,22 +34,18 @@ new Vue({
   el: '#app',
   data() {
     return {
-      emails: emails,
+      rawEmails: emails,
       searchString: null,
+      filteredEmails: null,
     };
   },
 
   computed: {
     filteredList: function () {
-      return this.emails.filter((item) => {
-        if (item.toLowerCase().indexOf(this.searchString) !== -1) return true;
-      });
-    },
-  },
-
-  methods: {
-    isMarked(item) {
-      if (this.filteredList.includes(item, 0)) return true;
+      return this.rawEmails.map((email) => ({
+        email,
+        marked: email.includes(this.searchString),
+      }));
     },
   },
 });

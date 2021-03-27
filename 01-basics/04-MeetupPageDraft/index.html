@@ -10,15 +10,15 @@
 </head>
 <body>
 <div id="app">
-  <div>
+  <div v-if="meetUp">
     <div class="meetup-cover"
-         :style="getImg ? `--bg-url: url('${getImg}')` : '' "
+         :style="meetUpCover ? `--bg-url: url('${meetUpCover}')` : '' "
     >
       <h1 class="meetup-cover__title">{{ meetUp ? meetUp.title : ''}}</h1>
     </div>
 
     <div class="container">
-      <div class="meetup" v-if="meetUp">
+      <div class="meetup">
         <div class="meetup__content">
           <h3>Описание</h3>
           <p class="meetup-description">{{ meetUp.description}}</p>

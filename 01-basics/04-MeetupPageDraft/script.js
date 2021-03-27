@@ -55,8 +55,8 @@ new Vue({
   },
 
   computed: {
-    getImg() {
-      return this.meetUp ? 'https://course-vue.javascript.ru/api/images/' + this.meetUp.imageId : ''
+    meetUpCover() {
+      return this.meetUp ? 'https://course-vue.javascript.ru/api/images/' + this.meetUp.imageId : '';
     },
 
     localDate() {
@@ -64,15 +64,11 @@ new Vue({
         year: 'numeric',
         month: 'long',
         day: 'numeric',
-      })
+      });
     },
 
     dateTime() {
-      return new Date(this.meetUp.date).toLocaleString(navigator.language, {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-      })
+      return new Date(this.meetUp.date).toISOString().substr(0, 10)
     },
   },
 
