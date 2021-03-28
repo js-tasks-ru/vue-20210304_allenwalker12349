@@ -1,13 +1,25 @@
-// import { MeetupAgendaItem } from './MeetupAgendaItem.js';
+import MeetupAgendaItem from './MeetupAgendaItem.js'
 
 export default {
   name: 'MeetupAgenda',
 
+  components: {
+    MeetupAgendaItem,
+  },
+
+  props: {
+    agenda: {
+      type: Array,
+      required: true
+    }
+  },
+
+  mounted() {
+    console.log(this.agenda)
+  },
+
   template: `
     <div class="meetup-agenda">
-      <div class="meetup-agenda__item"></div>
-      <div class="meetup-agenda__item"></div>
-      <!-- ... -->
-      <div class="meetup-agenda__item"></div>
+      <MeetupAgendaItem v-for="(item, i) in agenda" :key="i" :agendaItem="item" />
     </div>`,
 };
