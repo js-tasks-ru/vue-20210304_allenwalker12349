@@ -20,13 +20,10 @@ export default {
   computed: {
     date() {
       return new Date(this.meetup.date)
-    }
-  },
-
-  data() {
-    return {
-      imgUrl: getImageUrlByImageId(this.meetup.imageId)
-    }
+    },
+    imgUrl() {
+      return getImageUrlByImageId(this.meetup.imageId)
+    },
   },
 
   template: `
