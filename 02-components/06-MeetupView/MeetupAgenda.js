@@ -14,9 +14,6 @@ export default {
     }
   },
 
-  mounted() {
-    console.log(this.agenda)
-  },
 
   template: `
     <div class="meetup-agenda">

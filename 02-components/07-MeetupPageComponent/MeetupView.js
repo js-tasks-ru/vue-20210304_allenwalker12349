@@ -7,26 +7,26 @@ import { getImageUrlByImageId } from './data.js';
 export default {
   name: 'MeetupView',
   components: {
-    MeetupCover,
-    MeetupDescription,
-    MeetupAgenda,
-    MeetupInfo,
+    MeetupCover, MeetupDescription, MeetupAgenda, MeetupInfo
   },
 
   props: {
     meetup: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
 
   computed: {
     date() {
-      return new Date(this.meetup.date);
-    },
-    imgUrl() {
-      return this.meetup.imageId ? getImageUrlByImageId(this.meetup.imageId) : null;
-    },
+      return new Date(this.meetup.date)
+    }
+  },
+
+  data() {
+    return {
+      imgUrl: getImageUrlByImageId(this.meetup.imageId)
+    }
   },
 
   template: `
