@@ -1,11 +1,14 @@
 <template>
   <div class="content-tabs">
     <div class="content-tabs__nav">
-      <router-link v-for="(link, index) in tabs"
-                   :key="index"
-                   :to="link['to']"
-                   class="content-tabs__tab"
-      >{{ link.text }}</router-link>
+      <router-link
+        v-for="(link, index) in tabs"
+        :key="index"
+        :to="link['to']"
+        class="content-tabs__tab"
+        active-class="content-tabs__tab_active"
+        >{{ link.text }}</router-link
+      >
     </div>
     <div class="content-tabs__content"><slot></slot></div>
   </div>
