@@ -1,4 +1,13 @@
-<template></template>
+<template>
+  <header class="header">
+    <h1>Meetups</h1>
+    <nav>
+      <a href="#">Митапы</a>
+      <a href="#">Создать митап</a>
+      <a href="#">Вход</a>
+    </nav>
+  </header>
+</template>
 
 <script>
 export default {
