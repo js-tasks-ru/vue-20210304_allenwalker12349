@@ -1,10 +1,15 @@
 <template>
-  <button></button>
+  <BaseButton v-bind="$attrs" class="button_primary" v-on="$listeners">
+    <slot></slot>
+  </BaseButton>
 </template>
 
 <script>
+import BaseButton from '../components/BaseButton';
 export default {
   name: 'PrimaryButton',
+  components: {BaseButton},
+  inheritAttrs: false,
 };
 </script>
 
