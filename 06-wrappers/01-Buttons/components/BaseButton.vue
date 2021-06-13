@@ -1,6 +1,5 @@
 <template>
-  <component type="button"
-             class="button"
+  <component class="button"
              v-bind="$attrs"
              :class="{'button_block' : block}"
              :is="tag"
