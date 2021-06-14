@@ -1,16 +1,48 @@
 <template>
-  <div class="input-group input-group_icon input-group_icon-left input-group_icon-right">
-    <img class="icon" />
+  <div class="input-group input-group_icon"
+  :class="{'input-group_icon-left' : Boolean($slots['left-icon']),
+           'input-group_icon-right' : Boolean($slots['right-icon']) }">
+    <slot name="left-icon"></slot>
 
-    <input ref="" class="form-control form-control_rounded form-control_sm" />
+    <component
+      ref="input"
+      v-bind="$attrs"
+      @input="$emit('input', $event.target.value)"
+      @change="$emit('change', $event.target.value)"
+      :value.prop="value"
+      :is="isTextAria"
+      class="form-control"
+      :class="{
+        'form-control_sm': small,
+        'form-control_rounded': rounded,
+      }"
+    />
 
-    <img class="icon" />
+    <slot name="right-icon"></slot>
   </div>
 </template>
 
 <script>
 export default {
   name: 'AppInput',
+  inheritAttrs: false,
+  model: {
+    prop: 'value',
+    event: 'input',
+  },
+  props: {
+    small: Boolean,
+    rounded: Boolean,
+    multiline: Boolean,
+    value: {},
+  },
+  computed: {
+    isTextAria() {
+      if (this.multiline) {
+        return 'textarea'
+      } else return 'input'
+    }
+  },
 };
 </script>
 
