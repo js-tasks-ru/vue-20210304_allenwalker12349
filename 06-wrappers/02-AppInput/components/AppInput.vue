@@ -1,11 +1,12 @@
 <template>
-  <div class="input-group input-group_icon input-group_icon-left input-group_icon-right">
-    <img class="icon" />
+  <div class="input-group input-group_icon"
+  :class="{'input-group_icon-left' : Boolean($slots['left-icon']),
+           'input-group_icon-right' : Boolean($slots['right-icon']) }">
+    <slot name="left-icon"></slot>
 
     <component
       ref="input"
       v-bind="$attrs"
-      v-on="$listeners"
       @input="$emit('input', $event.target.value)"
       @change="$emit('change', $event.target.value)"
       :value.prop="value"
@@ -17,7 +18,7 @@
       }"
     />
 
-    <img class="icon" />
+    <slot name="right-icon"></slot>
   </div>
 </template>
 
@@ -33,7 +34,7 @@ export default {
     small: Boolean,
     rounded: Boolean,
     multiline: Boolean,
-    value: String,
+    value: {},
   },
   computed: {
     isTextAria() {
